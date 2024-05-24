@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
-import "./globals.css";
+import "./globles.css";
 import {
   ClerkProvider,
   SignInButton,
@@ -35,9 +35,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+    appearance={{
+      elements:{
+        formButtonPrimary:'primary-gradient',
+        footerActionLink:'primary-text-gradient hover:text-primary-500',
+      }
+    }}
+    >
     <html lang="en">
       <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <h1 className="h1-bold">hello brdr</h1>
         <header>
           <SignedOut>
             <SignInButton />
@@ -45,8 +53,8 @@ export default function RootLayout({
           <SignedIn>
             <UserButton />
           </SignedIn>
-        </header>
-        <h1>hello brdr</h1>
+        </header>   
+
         <main>
           {children}
         </main>
